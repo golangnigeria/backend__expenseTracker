@@ -8,6 +8,7 @@ import (
 	"github.com/golangnigeria/expenseTracker/internals/database"
 	"github.com/golangnigeria/expenseTracker/internals/repository"
 	"github.com/golangnigeria/expenseTracker/internals/repository/dbrepo"
+	"github.com/golangnigeria/expenseTracker/internals/routes"
 	"github.com/joho/godotenv"
 )
 
@@ -41,6 +42,9 @@ func main() {
 			log.Println("Error closing database connection")
 		}
 	}()
+
+	// Routes
+	routes.Routes(app)
 
 	err = app.Listen(":" + os.Getenv("PORT"))
 	if err != nil {
